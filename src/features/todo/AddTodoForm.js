@@ -11,8 +11,7 @@ const AddTodoForm = () => {
     const todoItems = useSelector(state => state.todoItems)
     const addTodo = (e) => {
         e.preventDefault()
-
-        text && dispatch(
+        dispatch(
             todoAdded({
                 id: nanoid(),
                 text,
@@ -21,7 +20,6 @@ const AddTodoForm = () => {
                 editText: ''
             })
         )
-
         setText('')
     }
 

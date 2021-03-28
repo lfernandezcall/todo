@@ -4,7 +4,6 @@ import { todoModified } from './todoSlice'
 
 const ModifyTodo = (props) => {
     const dispatch = useDispatch()
-    const actionTypes = ['done', 'modified', 'deleted']
 
     return (
         <section>
