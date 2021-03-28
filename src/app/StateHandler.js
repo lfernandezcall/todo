@@ -1,22 +1,29 @@
 import React, { useReducer, useContext, createContext } from "react";
 const TodoContext = createContext({
   id: '',
-  text: ''
+  text: '',
+  done: false,
+  modified: false
 });
 
 const initialState = JSON.parse(localStorage.getItem('todoItems')) || [];
 
 const Handlers = (state, action) => {
   const id = Math.random().toString(36).substr(2, 9);
-  
-  return [...state, { id: id, text: action.text }];
+  const mapping = {
+    add: [...state, { id: id, text: action.text }],
+    deleted: state.filter(item => (item.id !== action.id)), 
+    done: state.map(item => (item.id === action.id ? { ...item, done: !item.done } : item)),
+    modified: state.map(item => (item.id === action.id ? { ...item, modified: !item.modified } : item))
+  }
+
+  return mapping[action.type] || state
 }
 
 const Context = () => useContext(TodoContext);
 
 const CustomProvider = ({ ...props }) => {
   const [state, dispatch] = useReducer(Handlers, initialState);
-  
   localStorage.setItem('todoItems', JSON.stringify(state))
 
   return <TodoContext.Provider value={{state, dispatch}} {...props} />;

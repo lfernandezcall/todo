@@ -1,14 +1,19 @@
 import React from 'react'
 import { Context } from '../../app/StateHandler'
+import ModifyTodo from './ModifyTodo'
 
 const TodoList = () => {
     const { state } = Context();
-    console.log('state', state)
+
     return (
         <ul>{state.map(item => (
-            <div key={item.id}>
+            item.modified === true ?
+            (<p key={'modify'}>Wants to modify???</p>)
+            :
+            (<div>
                 <li key={item.id} className={item.done === true ? 'completed' : ''}>{item.text}</li>
-            </div>
+                <ModifyTodo id={item.id} />
+            </div>)
         ))}
         </ul>
     )

@@ -7,7 +7,7 @@ const AddTodoForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch({ text:  inputRef.current.value })
+        dispatch({ text:  inputRef.current.value, type: 'add' })
         inputRef.current.value = '';
     }
 
