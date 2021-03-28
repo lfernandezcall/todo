@@ -1,42 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { nanoid } from '@reduxjs/toolkit'
-import { todoAdded } from './todoSlice'
-import { useSelector } from 'react-redux'
+import React, { useRef } from 'react'
+import { Context } from '../../app/StateHandler'
 
 const AddTodoForm = () => {
-    const [text, setText] = useState('')
-    const dispatch = useDispatch()
-    const onChange = e => setText(e.target.value)
-    const todoItems = useSelector(state => state.todoItems)
-    const addTodo = (e) => {
+    const [_, dispatch] = Context();
+    const inputRef = useRef();
+
+    const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(
-            todoAdded({
-                id: nanoid(),
-                text,
-                done: false,
-                modified: false,
-                editText: ''
-            })
-        )
-        setText('')
+        dispatch({ text:  inputRef.current.value })
+        inputRef.current.value = '';
     }
 
-    useEffect(() => {
-        localStorage.setItem('todoItems', JSON.stringify(todoItems))
-    })
+    // useEffect(() => {
+    //     localStorage.setItem('todoItems', JSON.stringify(todoItems))
+    // })
 
     return (
         <section>
-            <form onSubmit={addTodo}>
+            <form onSubmit={handleSubmit}>
                 <input
+                    ref={inputRef}
                     type='text'
-                    name='text'
-                    value={text}
-                    onChange={onChange}
+                    placeholder='Enter new task'
                 />
-                <button>Add Todo</button>
+                <button type='submit'>Add Todo</button>
             </form>
         </section>
     )
