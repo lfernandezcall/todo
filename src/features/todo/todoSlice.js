@@ -1,18 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = [
-    { id: '1', text: 'Drink coffe'},
-    { id: '2', text: 'Take a nap'}
-]
-
 const todoSlice = createSlice({
     name: 'todoItems',
-    initialState,
+    initialState: JSON.parse(localStorage.getItem('todoItems')) || [],
     reducers: {
         todoAdded(state, action) {
             state.push(action.payload)
         }
     }
+
 })
 
 export const { todoAdded } = todoSlice.actions
