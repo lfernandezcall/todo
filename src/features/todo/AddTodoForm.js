@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { nanoid } from  '@reduxjs/toolkit'
+import { nanoid } from '@reduxjs/toolkit'
 import { todoAdded } from './todoSlice'
 import { useSelector } from 'react-redux'
-
-
 
 const AddTodoForm = () => {
     const [text, setText] = useState('')
@@ -13,19 +11,22 @@ const AddTodoForm = () => {
     const todoItems = useSelector(state => state.todoItems)
     const addTodo = (e) => {
         e.preventDefault()
-        
+
         text && dispatch(
             todoAdded({
                 id: nanoid(),
-                text
+                text,
+                done: false,
+                modified: false,
+                editText: ''
             })
-            )
-            
-            setText('')
-        }
-        
+        )
+
+        setText('')
+    }
+
     useEffect(() => {
-        localStorage.setItem('todoItems', JSON.stringify(todoItems)) 
+        localStorage.setItem('todoItems', JSON.stringify(todoItems))
     })
 
     return (
