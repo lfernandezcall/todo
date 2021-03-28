@@ -2,7 +2,7 @@ import React from 'react'
 import { Context } from '../../app/StateHandler'
 
 const TodoList = () => {
-    const [state, dispatch] = Context();
+    const { state } = Context();
     console.log('state', state)
     return (
         <ul>{state.map(item => (

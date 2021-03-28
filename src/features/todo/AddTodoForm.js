@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import { Context } from '../../app/StateHandler'
 
 const AddTodoForm = () => {
-    const [_, dispatch] = Context();
+    const { dispatch } = Context();
     const inputRef = useRef();
 
     const handleSubmit = (e) => {

@@ -19,7 +19,7 @@ const CustomProvider = ({ ...props }) => {
   
   localStorage.setItem('todoItems', JSON.stringify(state))
 
-  return <TodoContext.Provider value={[state, dispatch]} {...props} />;
+  return <TodoContext.Provider value={{state, dispatch}} {...props} />;
 }
 
 export { CustomProvider, Context };
