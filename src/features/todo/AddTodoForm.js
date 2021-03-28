@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Context } from '../../app/StateHandler'
 
 const AddTodoForm = () => {
@@ -10,10 +10,6 @@ const AddTodoForm = () => {
         dispatch({ text:  inputRef.current.value })
         inputRef.current.value = '';
     }
-
-    // useEffect(() => {
-    //     localStorage.setItem('todoItems', JSON.stringify(todoItems))
-    // })
 
     return (
         <section>
