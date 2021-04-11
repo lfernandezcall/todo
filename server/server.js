@@ -1,33 +1,20 @@
-const express = require("express");
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
-const testData = {
-  todoItems: [
-    {
-      done: false,
-      edit: false,
-      text: "clean the house",
-      id: "1",
-    },
-    {
-      done: false,
-      edit: false,
-      text: "drink beer",
-      id: "2",
-    },
-    {
-      done: false,
-      edit: false,
-      text: "take a nap!",
-      id: "3",
-    },
-  ],
-};
+app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send(testData);
+let todoItems = []
+
+app.get('/', (req, res) => {
+    res.send( { todoItems });
 });
+
+app.post('/', bodyParser.json(), (req, res) => {
+    res.send(todoItems = req.body)
+})
 
 app.listen(5000, () => {
-  console.log("Aplicattion listening on port 5000");
-});
+    console.log('Aplicattion listening on port 5000')
+})

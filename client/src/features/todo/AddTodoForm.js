@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
 import { todoAdded } from './todoSlice'
 import { useSelector } from 'react-redux'
+import { updateTodoItems } from '../../services'
 
 const AddTodoForm = () => {
     const [text, setText] = useState('')
@@ -24,7 +25,7 @@ const AddTodoForm = () => {
     }
 
     useEffect(() => {
-        localStorage.setItem('todoItems', JSON.stringify(todoItems))
+        updateTodoItems(todoItems)
     })
 
     return (
