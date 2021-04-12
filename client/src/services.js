@@ -30,5 +30,4 @@ const getTodoItems = createAsyncThunk(
   async () => await getAPI
 );
 
-
 export { getTodoItems, updateTodoItems };

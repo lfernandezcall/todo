@@ -5,9 +5,9 @@ import App from './App';
 import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import { getTodoItems } from './services'
+import { getTodoItems } from './services';
 
-store.dispatch(getTodoItems())
+store.dispatch(getTodoItems());
 
 ReactDOM.render(
   <React.StrictMode>

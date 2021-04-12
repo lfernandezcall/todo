@@ -1,46 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { nanoid } from '@reduxjs/toolkit'
-import { todoAdded } from './todoSlice'
-import { useSelector } from 'react-redux'
-import { updateTodoItems } from '../../services'
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
+import { todoAdded } from './todoSlice';
+import { useSelector } from 'react-redux';
+import { updateTodoItems } from '../../services';
 
 const AddTodoForm = () => {
-    const [text, setText] = useState('')
-    const dispatch = useDispatch()
-    const onChange = e => setText(e.target.value)
-    const todoItems = useSelector(state => state.todoItems)
-    const addTodo = (e) => {
-        e.preventDefault()
-        dispatch(
-            todoAdded({
-                id: nanoid(),
-                text,
-                done: false,
-                modified: false,
-                editText: ''
-            })
-        )
-        setText('')
-    }
+  const [text, setText] = useState('');
+  const dispatch = useDispatch();
+  const onChange = (e) => setText(e.target.value);
+  const todoItems = useSelector((state) => state.todoItems);
+  const addTodo = (e) => {
+    e.preventDefault();
+    dispatch(
+      todoAdded({
+        id: nanoid(),
+        text,
+        done: false,
+        modified: false,
+        editText: '',
+      })
+    );
+    setText('');
+  };
 
-    useEffect(() => {
-        updateTodoItems(todoItems)
-    })
+  useEffect(() => {
+    updateTodoItems(todoItems);
+  });
 
-    return (
-        <section>
-            <form onSubmit={addTodo}>
-                <input
-                    type='text'
-                    name='text'
-                    value={text}
-                    onChange={onChange}
-                />
-                <button>Add Todo</button>
-            </form>
-        </section>
-    )
-}
+  return (
+    <section>
+      <form onSubmit={addTodo}>
+        <input type="text" name="text" value={text} onChange={onChange} />
+        <button>Add Todo</button>
+      </form>
+    </section>
+  );
+};
 
-export default AddTodoForm
+export default AddTodoForm;

@@ -20,11 +20,11 @@ const TodoList = () => {
     <ul>
       {todoItems.map((item) => (
         <div key={item.id}>
-          { item.modified === true ? (
+          {item.modified === true ? (
             <form key={item.id} onSubmit={(e) => saveEdit(e, item)}>
               <input
-                type='text'
-                name='text'
+                type="text"
+                name="text"
                 value={editText}
                 placeholder={item.text}
                 onChange={onChange}
