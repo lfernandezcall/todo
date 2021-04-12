@@ -44,6 +44,9 @@ body {
   cursor: pointer;
   border-radius: 3px;
 }
+.add-todo-form button:disabled {
+  cursor: not-allowed;
+}
 
 .todos-wrapper {
   padding-left: 0px;

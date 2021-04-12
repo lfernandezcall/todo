@@ -28,11 +28,15 @@ const AddTodoForm = () => {
     updateTodoItems(todoItems);
   });
 
+  const isDisabled = () => {
+    return text === '';
+  };
+
   return (
     <section className="add-todo-form">
       <form onSubmit={addTodo}>
         <input type="text" name="text" value={text} onChange={onChange} />
-        <button>✚</button>
+        <button disabled={isDisabled()} >✚</button>
       </form>
     </section>
   );
