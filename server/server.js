@@ -16,5 +16,5 @@ app.post('/', bodyParser.json(), (req, res) => {
 });
 
 app.listen(5000, () => {
-  console.log('Aplicattion listening on port 5000');
+  console.log('Aplicattion listening on port 5000!');
 });

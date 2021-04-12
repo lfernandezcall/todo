@@ -12,9 +12,10 @@ const ModifyTodo = (props) => {
   ];
 
   return (
-    <section>
+    <div className="action-buttons-wrapper">
       {actionTypes.map((action) => (
         <button
+          className={`action-button-${action.type}`}
           key={action.type}
           onClick={() =>
             dispatch(todoModified({ id: props.id, type: action.type }))
@@ -23,7 +24,7 @@ const ModifyTodo = (props) => {
           {action.emoji}
         </button>
       ))}
-    </section>
+    </div>
   );
 };
 

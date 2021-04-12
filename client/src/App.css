@@ -1,5 +1,19 @@
-
 .completed {
-    text-decoration: line-through;
-    color: rgb(134, 134, 134);
-} 
+  text-decoration: line-through;
+  color: rgb(134, 134, 134);
+}
+
+.todos-wrapper li {
+  list-style: none;
+  display: inline;
+}
+
+.action-buttons-wrapper {
+  display: inline;
+}
+
+.action-buttons-wrapper button {
+  border: 0px;
+  background: none;
+}
+

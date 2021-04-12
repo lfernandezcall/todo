@@ -19,7 +19,7 @@ const TodoList = () => {
   return (
     <ul>
       {todoItems.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className={'todos-wrapper'}>
           {item.modified === true ? (
             <form key={item.id} onSubmit={(e) => saveEdit(e, item)}>
               <input
@@ -31,14 +31,9 @@ const TodoList = () => {
               />
             </form>
           ) : (
-            <div key={item.id}>
-              <li
-                key={item.id}
-                className={item.done === true ? 'completed' : ''}
-              >
-                {item.text}
-              </li>
-            </div>
+            <li key={item.id} className={item.done === true ? 'completed' : ''}>
+              {item.text}
+            </li>
           )}
           <ModifyTodo key={`modify_${item.id}`} id={item.id} />
         </div>
