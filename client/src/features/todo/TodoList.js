@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ModifyTodo from './ModifyTodo';
 import { useDispatch } from 'react-redux';
-import { editItem, todoModified } from './todoSlice';
+import { editItem } from './todoSlice';
 
 const TodoList = () => {
   const todoItems = useSelector((state) => state.todoItems);
@@ -19,7 +19,7 @@ const TodoList = () => {
   return (
     <ul className="todos-wrapper">
       {todoItems.map((item) => (
-        <div key={item.id} className={'todo-item'}>
+        <div key={item.id} className="todo-item">
           {item.modified === true ? (
             <form className="edit-todo-form" key={item.id} onSubmit={(e) => saveEdit(e, item)}>
               <input
