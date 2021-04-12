@@ -27,7 +27,7 @@ const todoSlice = createSlice({
             }
           : item
       );
-    },
+    }
   },
   extraReducers: {
     [getTodoItems.fulfilled]: (state, action) => {

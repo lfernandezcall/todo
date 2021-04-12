@@ -18,7 +18,7 @@ const AddTodoForm = () => {
         text,
         done: false,
         modified: false,
-        editText: '',
+        editText: ''
       })
     );
     setText('');
