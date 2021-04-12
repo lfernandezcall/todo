@@ -17,11 +17,11 @@ const TodoList = () => {
   };
 
   return (
-    <ul>
+    <ul className="todos-wrapper">
       {todoItems.map((item) => (
-        <div key={item.id} className={'todos-wrapper'}>
+        <div key={item.id} className={'todo-item'}>
           {item.modified === true ? (
-            <form key={item.id} onSubmit={(e) => saveEdit(e, item)}>
+            <form className="edit-todo-form" key={item.id} onSubmit={(e) => saveEdit(e, item)}>
               <input
                 type="text"
                 name="text"

@@ -29,10 +29,10 @@ const AddTodoForm = () => {
   });
 
   return (
-    <section>
+    <section className="add-todo-form">
       <form onSubmit={addTodo}>
         <input type="text" name="text" value={text} onChange={onChange} />
-        <button>Add Todo</button>
+        <button>✚</button>
       </form>
     </section>
   );
